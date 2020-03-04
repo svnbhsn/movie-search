@@ -1,4 +1,4 @@
-export default interface Movie {
+export interface Movie {
     popularity: number;
     vote_count: number;
     video: boolean;
@@ -14,3 +14,12 @@ export default interface Movie {
     overview: string;
     release_date: string;
 }
+
+export default interface MovieCollection {
+    page: number;
+    total_results: number;
+    total_pages: number;
+    results: Movie[];
+}
+
+
