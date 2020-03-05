@@ -28,8 +28,7 @@
 .searchField {
   padding: 10px;
   margin-bottom: 20px;
-  background-color: rgba(35, 37, 41, 0.8);
-  border: 1px solid white;
+  background-color: rgba(24, 108, 163, 0.8);
 }
 
 .searchField input {
@@ -68,10 +67,12 @@
 .moviePosterFrame img {
   opacity: 0.9;
   border-radius: 18px;
+  transition: transform .2s;
 }
 
 .moviePosterFrame img:hover {
-  opacity: 2;
+  opacity: 1;
+  transform: scale(1.3);
 }
 
 .moviePosterFrame:hover {

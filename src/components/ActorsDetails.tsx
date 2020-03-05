@@ -143,6 +143,7 @@ class ActorsDetails extends React.Component<Props, State> {
                         </div>
                     </div>
                 </div>
+                <button id="backButton" className='btn btn-secondary btn-lg btn-block' onClick={() => this.props.history.goBack()}>Zurück</button>
             </div>
         );
     }

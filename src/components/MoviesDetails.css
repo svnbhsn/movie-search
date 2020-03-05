@@ -67,3 +67,8 @@
 .castFrame #actorRole {
     font-size: 0.9rem;
 }
+
+#backButton {
+
+    margin: 30px;
+}
