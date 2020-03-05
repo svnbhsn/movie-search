@@ -49,7 +49,7 @@ class ActorsDetails extends React.Component<Props, State> {
 
 
     render() {
-        if (!this.state) {
+        if (!this.state || !this.state.actors) {
             return null;
         }
 
@@ -66,10 +66,10 @@ class ActorsDetails extends React.Component<Props, State> {
                         />
                     </div>
                     <div className="movieDescription">
-                        <h3>
+                        <h2>
                             {actor.name}
-
-                        </h3>
+                        </h2>
+                        <br />
                         <div className="facts">
                             <p>Bekannt als: {actor.known_for_department}</p>
                             <br />
@@ -89,7 +89,7 @@ class ActorsDetails extends React.Component<Props, State> {
 
                 <div className="information">
                     <div id="filme">
-                        <h2>Filme:</h2>
+                        <h2> <strong>Filme</strong></h2>
                         <div className="casts">
 
                             {this.state.movieRoles && (
@@ -116,7 +116,7 @@ class ActorsDetails extends React.Component<Props, State> {
                         </div>
                     </div>
                     <div id="series">
-                        <h2>Serien:</h2>
+                        <h2><strong>Serien</strong></h2>
                         <div className="casts">
 
                             {this.state.serieRoles && (

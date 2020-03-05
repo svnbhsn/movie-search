@@ -3,10 +3,10 @@
 }
 
 .App-header {
-  /*  background-image: url(./assets/bg.jpg); */
+  background-image: url(./assets/bg.jpg);
   background-attachment: fixed;
   background-size: cover;
-  background-color: #282c34;
+  background-color: rgba(40, 44, 52, 1);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,25 +21,26 @@
 }
 
 .content {
-  background-color: rgba(40, 44, 52, 0.9);
-  width: 100%;
+  background-color: rgba(35, 37, 41, 0.8);
+  width: 80%;
 }
 
 .searchField {
   padding: 10px;
   margin-bottom: 20px;
-  background-color: #61dafb;
+  background-color: rgba(35, 37, 41, 0.8);
+  border: 1px solid white;
 }
 
 .searchField input {
   width: 70%;
   padding: 12px 20px;
-  margin: 8px 0;
   box-sizing: border-box;
   background-image: url('./assets/lupe.png');
-  background-position: 10px 10px;
+  background-position: 15px 15px;
   background-repeat: no-repeat;
   padding-left: 60px;
+  border-radius: 12px;
   ;
 }
 
@@ -48,6 +49,7 @@
   justify-content: space-between;
   align-content: stretch;
   flex-wrap: wrap;
+  padding: 20px;
 }
 
 .moviePosterFrame {
@@ -56,16 +58,15 @@
 }
 
 .moviePosterFrame p {
-  font-size: 0.8rem;
+  font-size: 1rem;
   white-space: nowrap;
   overflow: hidden;
   width: 100%;
   text-overflow: ellipsis;
 }
 
-
 .moviePosterFrame img {
-  opacity: 0.8;
+  opacity: 0.9;
   border-radius: 18px;
 }
 

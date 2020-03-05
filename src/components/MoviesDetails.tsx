@@ -40,7 +40,7 @@ class MoviesDetails extends React.Component<Props, State> {
 
 
     render() {
-        if (!this.state) {
+        if (!this.state || !this.state.movies) {
             return null;
         }
 
@@ -70,6 +70,11 @@ class MoviesDetails extends React.Component<Props, State> {
                         <div className="facts">
                             <p>Rating: {(movie.vote_average * 100) / 10}%</p>
                             <p>Laufzeit: {movie.runtime} Minuten</p>
+                            <p>Genre:
+                            {movie.genres.map((genre: any) => {
+                                return <li id="genre" key={genre.id}>{genre.name}</li>
+                            })}
+                            </p>
                             <p>Premiere: {releaseDate}</p>
                         </div>
                         <p>
@@ -101,7 +106,6 @@ class MoviesDetails extends React.Component<Props, State> {
                                         <strong>{person.name}</strong> <br />
                                         <span id="actorRole">{person.character}</span>
                                     </p>
-
                                 </div>
                             ))
                         )}

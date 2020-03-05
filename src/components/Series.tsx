@@ -54,6 +54,7 @@ class Series extends React.Component<any, State> {
                             type="text"
                             value={this.state.value}
                             onChange={this.onChangeHandler}
+                            placeholder="Nach Titelnamen suchen ..."
                         />
                     </div>
                     {this.state.series && (

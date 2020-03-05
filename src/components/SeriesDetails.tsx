@@ -38,7 +38,7 @@ class SeriesDetails extends React.Component<Props, State> {
 
 
     render() {
-        if (!this.state) {
+        if (!this.state || !this.state.series) {
             return null;
         }
 
@@ -47,8 +47,10 @@ class SeriesDetails extends React.Component<Props, State> {
         let releaseDate = new Date(date).toLocaleDateString();
         let ausschnitt = date.slice(0, 4);
 
+
+
         return (
-            <div className="content">
+            <div className="content" >
                 <div className="movieHead">
                     <div className="moviePoster">
                         <img
@@ -68,6 +70,11 @@ class SeriesDetails extends React.Component<Props, State> {
                             <p>Herkunft: {serie.origin_country}</p>
                             <p>Staffeln: {serie.number_of_seasons}</p>
                             <p>Laufzeit: {serie.episode_run_time} Minuten / Episode</p>
+                            <p>Genre:
+                            {serie.genres.map((genre: any) => {
+                                return <li id="genre" key={genre.id}>{genre.name}</li>
+                            })}
+                            </p>
                             <p>Erstaustrahlung: {releaseDate}</p>
                         </div>
                         <p>

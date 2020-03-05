@@ -1,30 +1,22 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
+import { Link, NavLink } from 'react-router-dom'
+import { Navbar, Nav } from 'react-bootstrap'
 
-interface Props {
-    children: any
-}
+import './Navigation.css';
 
-export default function Navigation(props: Props) {
-    return (
-        <>
-            <div className='ui large top fixed menu'>
-                <div className='ui container'>
-                    <NavLink to='/movies' className='item' activeClassName='active'>Filme</NavLink>
-                    <NavLink to='/series' className='item' activeClassName='active'>Serien</NavLink>
-                    <NavLink to='/actors' className='item' activeClassName='active'>Actors</NavLink>
-                    <NavLink to='/outnow' className='item' activeClassName='active'>Jetzt im Kino</NavLink>
-                    <NavLink to='/upcoming' className='item' activeClassName='active'>Neue Filme</NavLink>
-                </div>
-                <div className='ui vertical stripe' style={{ marginTop: '100px' }}>
-                    <div className='ui middle aligned stackable grid container'>
-                        {props.children}
-                    </div>
-                </div>
-
-            </div>
-        </>
-    )
+export default class Navigation extends React.Component {
+    render() {
+        return (
+            <Navbar bg="dark" variant="dark" sticky="top" fixed="top">
+                <Navbar.Brand as={Link} to='/'>TMDb Search</Navbar.Brand>
+                <Nav className="mr-auto">
+                    <Nav.Link as={NavLink} to='/movies'>Filme</Nav.Link>
+                    <Nav.Link as={NavLink} to='/series'>TV Serien</Nav.Link>
+                    <Nav.Link as={NavLink} to='/actors'>Schauspieler</Nav.Link>
+                    <Nav.Link as={NavLink} to='/outnow'>Aktuelle Kinofilme</Nav.Link>
+                    <Nav.Link as={NavLink} to='/upcoming'>Demnächst</Nav.Link>
+                </Nav>
+            </Navbar>
+        );
+    }
 }

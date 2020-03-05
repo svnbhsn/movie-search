@@ -54,6 +54,7 @@ class Actors extends React.Component<any, State> {
                             type="text"
                             value={this.state.value}
                             onChange={this.onChangeHandler}
+                            placeholder="Nach Name eingeben ..."
                         />
                     </div>
                     {this.state.actors && (
