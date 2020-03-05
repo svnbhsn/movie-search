@@ -19,8 +19,9 @@ export interface Crew {
     profile_path: string;
 }
 
-export interface Casts {
+export default interface Casts {
     id: number;
     cast: Cast[];
     crew: Crew[];
 }
+

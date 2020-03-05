@@ -1,15 +1,15 @@
 import React from "react";
 import axios from "axios";
 import './MoviesDetails.css';
-import SingleSerie from "../SingleSerie";
+import SingleSerie from "../models/SingleSerie";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { Casts } from "../Casts";
+import { Cast } from "../models/Casts";
 
 interface Props extends RouteComponentProps<{ id: string }> { }
 
 interface State {
     series: SingleSerie;
-    casts: Casts;
+    cast: Cast[];
 }
 
 class SeriesDetails extends React.Component<Props, State> {
@@ -25,15 +25,15 @@ class SeriesDetails extends React.Component<Props, State> {
 
         // Get Movie Casts infos
         axios.get(
-            `https://api.themoviedb.org/3/movie/${this.props.match.params.id}/credits?api_key=a69372d529161c3bf5f724875b197064`
+            `https://api.themoviedb.org/3/tv/${this.props.match.params.id}/credits?api_key=a69372d529161c3bf5f724875b197064`
         )
             .then(res => {
-                this.setState({ casts: res.data });
+                this.setState({ cast: res.data.cast });
             });
     }
 
     imgError(e: any) {
-        e.target.src = "https://i.imgur.com/J6B3d9H.jpg";
+        e.target.src = "https://i.imgur.com/PanR74x.jpg";
     }
 
 
@@ -65,6 +65,8 @@ class SeriesDetails extends React.Component<Props, State> {
                         </h3>
                         <div className="facts">
                             <p>Rating: {(serie.vote_average * 100) / 10}%</p>
+                            <p>Herkunft: {serie.origin_country}</p>
+                            <p>Staffeln: {serie.number_of_seasons}</p>
                             <p>Laufzeit: {serie.episode_run_time} Minuten / Episode</p>
                             <p>Erstaustrahlung: {releaseDate}</p>
                         </div>
@@ -75,20 +77,30 @@ class SeriesDetails extends React.Component<Props, State> {
                         </p>
 
                     </div>
+                </div>
+
+                <br />
+
+                <div className="information">
+                    <h4>Besetzung</h4>
                     <div className="casts">
-                        <h4>Besetzung</h4>
-                        {/* 
-                     TODO: Armin Fragen
-                     
-                        {this.state.casts.map((cast: any) => (
-                            <div key={cast.id} className="coinFrame">
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w138_and_h175_face/${cast.profile_path}`}
-                                    alt="Movieposter"
-                                />
-                                <p>{coin.name} ({coin.symbol})</p>
-                            </div>
-                        ))} */}
+
+                        {this.state.cast && (
+                            this.state.cast.sort().slice(0, 9).map((person: any) => (
+                                <div key={person.id} className="castFrame">
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w138_and_h175_face/${person.profile_path}`}
+                                        onError={this.imgError}
+                                        alt="Movieposter"
+                                    />
+                                    <p id="actorName">
+                                        <strong>{person.name}</strong> <br />
+                                        <span id="actorRole">{person.character}</span>
+                                    </p>
+
+                                </div>
+                            ))
+                        )}
                     </div>
                 </div>
             </div>

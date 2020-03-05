@@ -15,6 +15,7 @@
 
 .moviePoster img {
     width: 100%;
+    border: 2px solid white;
 }
 
 .facts {
@@ -39,4 +40,29 @@
 .movieDescription p {
     font-size: 1rem;
     text-align: justify;
+}
+
+.information {
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.casts {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.castFrame {
+    padding: 20px 10px;
+    width: 150px;
+}
+
+.castFrame #actorName {
+    font-size: 1.3rem;
+}
+
+.castFrame #actorRole {
+    font-size: 0.9rem;
 }

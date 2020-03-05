@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import TVCollection from "../Series";
+import TVCollection from "../models/Series";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 
 interface Props extends RouteComponentProps {

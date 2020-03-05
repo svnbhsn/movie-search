@@ -1,18 +1,19 @@
 import React from "react";
 import axios from "axios";
 import './MoviesDetails.css';
-import SingleMovie from "../SingleMovie";
+import SingleMovie from "../models/SingleMovie";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { Casts } from "../Casts";
+import { Cast } from "../models/Casts";
 
 interface Props extends RouteComponentProps<{ id: string }> { }
 
 interface State {
     movies: SingleMovie;
-    casts: Casts;
+    cast: Cast[];
 }
 
 class MoviesDetails extends React.Component<Props, State> {
+
     componentDidMount() {
 
         // Get general Movie Infos
@@ -28,12 +29,13 @@ class MoviesDetails extends React.Component<Props, State> {
             `https://api.themoviedb.org/3/movie/${this.props.match.params.id}/credits?api_key=a69372d529161c3bf5f724875b197064`
         )
             .then(res => {
-                this.setState({ casts: res.data });
+
+                this.setState({ cast: res.data.cast });
             });
     }
 
     imgError(e: any) {
-        e.target.src = "https://i.imgur.com/J6B3d9H.jpg";
+        e.target.src = "https://i.imgur.com/PanR74x.jpg";
     }
 
 
@@ -43,9 +45,11 @@ class MoviesDetails extends React.Component<Props, State> {
         }
 
         const movie = this.state.movies;
+        const casts = this.state.cast;
         const date: string = this.state.movies.release_date;
         let releaseDate = new Date(date).toLocaleDateString();
         let ausschnitt = date.slice(0, 4);
+
 
         return (
             <div className="content">
@@ -75,20 +79,27 @@ class MoviesDetails extends React.Component<Props, State> {
                         </p>
 
                     </div>
+                </div>
+                <br />
+                <div className="information">
+                    <h4>Besetzung</h4>
                     <div className="casts">
-                        <h4>Besetzung</h4>
-                        {/* 
-                     TODO: Armin Fragen
-                     
-                        {this.state.casts.map((cast: any) => (
-                            <div key={cast.id} className="coinFrame">
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w138_and_h175_face/${cast.profile_path}`}
-                                    alt="Movieposter"
-                                />
-                                <p>{coin.name} ({coin.symbol})</p>
-                            </div>
-                        ))} */}
+                        {this.state.cast && (
+                            this.state.cast.sort().slice(0, 9).map((person: any) => (
+                                <div key={person.id} className="castFrame">
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w138_and_h175_face/${person.profile_path}`}
+                                        onError={this.imgError}
+                                        alt="Movieposter"
+                                    />
+                                    <p id="actorName">
+                                        <strong>{person.name}</strong> <br />
+                                        <span id="actorRole">{person.character}</span>
+                                    </p>
+
+                                </div>
+                            ))
+                        )}
                     </div>
                 </div>
             </div>

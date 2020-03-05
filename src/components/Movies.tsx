@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import MovieCollection from "../Movie";
+import MovieCollection from "../models/Movie";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 
 interface Props extends RouteComponentProps {
