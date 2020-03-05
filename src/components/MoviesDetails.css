@@ -57,6 +57,7 @@
 .castFrame {
     padding: 20px 10px;
     width: 150px;
+    cursor: pointer;
 }
 
 .castFrame #actorName {

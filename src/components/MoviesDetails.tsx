@@ -82,7 +82,7 @@ class MoviesDetails extends React.Component<Props, State> {
                 </div>
                 <br />
                 <div className="information">
-                    <h4>Besetzung</h4>
+                    <h2>Besetzung</h2>
                     <div className="casts">
                         {this.state.cast && (
                             this.state.cast.sort().slice(0, 9).map((person: any) => (
@@ -91,6 +91,11 @@ class MoviesDetails extends React.Component<Props, State> {
                                         src={`https://image.tmdb.org/t/p/w138_and_h175_face/${person.profile_path}`}
                                         onError={this.imgError}
                                         alt="Movieposter"
+                                        onClick={() =>
+                                            this.props.history.push(
+                                                `/actors/${person.id}`
+                                            )
+                                        }
                                     />
                                     <p id="actorName">
                                         <strong>{person.name}</strong> <br />
