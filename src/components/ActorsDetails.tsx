@@ -42,7 +42,36 @@ class ActorsDetails extends React.Component<Props, State> {
             });
     }
 
+    // Check the given number end return the gender as string
+    gender(number: number) {
+        if (number === 1) {
+            return "Weiblich"
+        } else if (number === 2) {
+            return "Männlich"
+        } else {
+            return "Unbekannt"
+        }
+    }
 
+    // Check, if in the fact entries are available
+    contentvalidator(input: any) {
+        if (input != null) {
+            return input
+        } else {
+            return "-"
+        }
+    }
+
+    // Check, if in the biography is available
+    bioValidator(input: string) {
+        if (input !== "") {
+            return input
+        } else {
+            return "Keine Informationen hinterlegt."
+        }
+    }
+
+    // substitute for the Image of the Actors
     imgError(e: any) {
         e.target.src = "https://i.imgur.com/PanR74x.jpg";
     }
@@ -66,22 +95,20 @@ class ActorsDetails extends React.Component<Props, State> {
                         />
                     </div>
                     <div className="movieDescription">
-                        <h2>
-                            {actor.name}
-                        </h2>
+                        <h1>{actor.name}</h1>
                         <br />
                         <div className="facts">
-                            <p>Bekannt als: {actor.known_for_department}</p>
-                            <br />
-                            <p>Geschlecht: {actor.gender}</p>
-                            <p>Geboren am: {actor.birthday} in {actor.place_of_birth}</p>
+                            <p><strong>Geschlecht:</strong> <br />{this.gender(actor.gender)}</p>
+                            <p><strong>Geboren am:</strong> <br />{this.contentvalidator(actor.birthday)}</p>
+                            <p><strong>Geburtsort:</strong> <br />{this.contentvalidator(actor.place_of_birth)}</p>
+                            <p><strong>Gestorben am:</strong> <br />{this.contentvalidator(actor.deathday)}</p>
+                            <p><strong>Webseite:</strong> <br /> <a href={actor.homepage} target="_blank" rel="noopener noreferrer">Link</a></p>
                         </div>
                         <p>
                             <strong>Biografie</strong>
                             <br />
-                            {actor.biography}
+                            {this.bioValidator(actor.biography)}
                         </p>
-
                     </div>
                 </div>
 
@@ -115,6 +142,7 @@ class ActorsDetails extends React.Component<Props, State> {
                             )}
                         </div>
                     </div>
+                    <br />
                     <div id="series">
                         <h2><strong>Serien</strong></h2>
                         <div className="casts">

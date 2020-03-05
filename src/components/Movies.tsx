@@ -45,11 +45,7 @@ class Movies extends React.Component<any, State> {
 
     render() {
         if (!this.state) {
-            return (
-                <div className="content">
-                    <h1>Nichts gefunden</h1>;
-                </div>
-            );
+            return null;
         } else {
             return (
                 <div className="content">

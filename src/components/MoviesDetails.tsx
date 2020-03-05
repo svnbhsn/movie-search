@@ -34,6 +34,25 @@ class MoviesDetails extends React.Component<Props, State> {
             });
     }
 
+    // Check, if in the fact entries are available
+    contentvalidator(input: any) {
+        if (input !== null) {
+            return input
+        } else {
+            return "-"
+        }
+    }
+
+    // Check, if in the biography is available
+    bioValidator(input: string) {
+        if (input !== "") {
+            return input
+        } else {
+            return "Keine Informationen hinterlegt."
+        }
+    }
+
+    // substitute for the Poster Image
     imgError(e: any) {
         e.target.src = "https://i.imgur.com/PanR74x.jpg";
     }
@@ -47,7 +66,6 @@ class MoviesDetails extends React.Component<Props, State> {
         const movie = this.state.movies;
         const casts = this.state.cast;
         const date: string = this.state.movies.release_date;
-        let releaseDate = new Date(date).toLocaleDateString();
         let ausschnitt = date.slice(0, 4);
 
 
@@ -63,34 +81,40 @@ class MoviesDetails extends React.Component<Props, State> {
                     </div>
                     <div className="movieDescription">
                         <h3>
-                            {movie.title} ({ausschnitt})
+                            {movie.title}
                             <br />
                             <span>({movie.original_title})</span>
                         </h3>
-                        <div className="facts">
-                            <p>Rating: {(movie.vote_average * 100) / 10}%</p>
-                            <p>Laufzeit: {movie.runtime} Minuten</p>
-                            <p>Genre:
-                            {movie.genres.map((genre: any) => {
-                                return <li id="genre" key={genre.id}>{genre.name}</li>
-                            })}
-                            </p>
-                            <p>Premiere: {releaseDate}</p>
-                        </div>
-                        <p>
-                            <strong>Beschreibung</strong>
-                            <br />
-                            {movie.overview}
-                        </p>
 
+                        <p>
+                            <strong>Handlung</strong>
+                            <br />
+                            {this.bioValidator(movie.overview)}
+                        </p>
+                        <div className="facts">
+                            <p><strong>Rating:</strong> <br /> {(movie.vote_average * 100) / 10}%</p>
+                            <p><strong>Produktionsland:</strong>
+                                {movie.production_countries.map((origin: any) => {
+                                    return <li id="genre" key={origin.id}>{origin.name}</li>
+                                })}
+                            </p>
+                            <p><strong>Originalsprache:</strong><br /> {movie.original_language}</p>
+                            <p><strong>Länge:</strong> <br />{movie.runtime} Minuten</p>
+                            <p><strong>Genre:</strong>
+                                {movie.genres.map((genre: any) => {
+                                    return <li id="genre" key={genre.id}>{genre.name}</li>
+                                })}
+                            </p>
+                            <p><strong>Erscheinungsjahr:</strong> <br />{ausschnitt}</p>
+                        </div>
                     </div>
                 </div>
                 <br />
                 <div className="information">
                     <h2>Besetzung</h2>
                     <div className="casts">
-                        {this.state.cast && (
-                            this.state.cast.sort().slice(0, 9).map((person: any) => (
+                        {casts && (
+                            casts.sort().slice(0, 9).map((person: any) => (
                                 <div key={person.id} className="castFrame">
                                     <img
                                         src={`https://image.tmdb.org/t/p/w138_and_h175_face/${person.profile_path}`}

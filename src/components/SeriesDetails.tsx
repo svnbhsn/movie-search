@@ -36,6 +36,14 @@ class SeriesDetails extends React.Component<Props, State> {
         e.target.src = "https://i.imgur.com/PanR74x.jpg";
     }
 
+    // Check, if in the biography is available
+    bioValidator(input: string) {
+        if (input !== "") {
+            return input
+        } else {
+            return "Keine Informationen hinterlegt."
+        }
+    }
 
     render() {
         if (!this.state || !this.state.series) {
@@ -45,7 +53,6 @@ class SeriesDetails extends React.Component<Props, State> {
         const serie = this.state.series;
         const date: string = this.state.series.first_air_date;
         let releaseDate = new Date(date).toLocaleDateString();
-        let ausschnitt = date.slice(0, 4);
 
 
 
@@ -61,28 +68,29 @@ class SeriesDetails extends React.Component<Props, State> {
                     </div>
                     <div className="movieDescription">
                         <h3>
-                            {serie.name} ({ausschnitt})
+                            {serie.name}
                             <br />
                             <span>({serie.original_name})</span>
                         </h3>
-                        <div className="facts">
-                            <p>Rating: {(serie.vote_average * 100) / 10}%</p>
-                            <p>Herkunft: {serie.origin_country}</p>
-                            <p>Staffeln: {serie.number_of_seasons}</p>
-                            <p>Laufzeit: {serie.episode_run_time} Minuten / Episode</p>
-                            <p>Genre:
-                            {serie.genres.map((genre: any) => {
-                                return <li id="genre" key={genre.id}>{genre.name}</li>
-                            })}
-                            </p>
-                            <p>Erstaustrahlung: {releaseDate}</p>
-                        </div>
-                        <p>
-                            <strong>Beschreibung</strong>
-                            <br />
-                            {serie.overview}
-                        </p>
 
+                        <p>
+                            <strong>Handung</strong>
+                            <br />
+                            {this.bioValidator(serie.overview)}
+                        </p>
+                        <div className="facts">
+                            <p><strong>Rating:</strong> <br />{(serie.vote_average * 100) / 10}%</p>
+                            <p><strong>Produktionsland:</strong><br /> {serie.origin_country}</p>
+                            <p><strong>Originalsprache:</strong><br /> {serie.original_language}</p>
+                            <p><strong>Anzahl Staffeln:</strong> <br />{serie.number_of_seasons}</p>
+                            <p><strong>Länge:</strong> <br />{serie.episode_run_time} Minuten</p>
+                            <p><strong>Genre:</strong>
+                                {serie.genres.map((genre: any) => {
+                                    return <li id="genre" key={genre.id}>{genre.name}</li>
+                                })}
+                            </p>
+                            <p><strong>Erstaustrahlung:</strong> <br />{releaseDate}</p>
+                        </div>
                     </div>
                 </div>
 

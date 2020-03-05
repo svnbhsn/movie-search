@@ -21,6 +21,7 @@
 .facts {
     display: flex;
     justify-content: space-between;
+    list-style: none;
 }
 
 .movieDescription {
@@ -51,7 +52,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: left;
+    justify-content: space-between;
 }
 
 .castFrame {
@@ -61,7 +62,7 @@
 }
 
 .castFrame #actorName {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .castFrame #actorRole {
