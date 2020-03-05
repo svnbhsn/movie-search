@@ -10,21 +10,6 @@ interface Props {
 export default function Layout(props: Props) {
     return (
         <>
-            {/*             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Navbar.Brand>Movie Database Search</Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto">
-                        <NavLink to='/movies' className='item' activeClassName='active'>Filme</NavLink>
-                        <NavLink to='/series' className='item' activeClassName='active'>Serien</NavLink>
-                        <NavLink to='/actors' className='item' activeClassName='active'>Actors</NavLink>
-                        <NavLink to='/outnow' className='item' activeClassName='active'>Jetzt im Kino</NavLink>
-                        <NavLink to='/upcoming' className='item' activeClassName='active'>Neue Filme</NavLink>
-                    </Nav>
-
-                </Navbar.Collapse>
-            </Navbar> */}
-
             <div className='ui large top fixed menu'>
                 <div className='ui container'>
                     <NavLink to='/movies' className='item' activeClassName='active'>Filme</NavLink>

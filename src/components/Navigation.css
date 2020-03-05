@@ -1,0 +1,8 @@
+.navbar {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.navbar a {
+    font-size: 1.5rem;
+}

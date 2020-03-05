@@ -1,0 +1,75 @@
+.content {}
+
+.movieHead {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-areas: 'poster description';
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+}
+
+.moviePoster {
+    grid-area: poster;
+    padding: 30px 10px 30px 20px;
+}
+
+.moviePoster img {
+    width: 100%;
+    border: 2px solid white;
+}
+
+.facts {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.movieDescription {
+    grid-area: description;
+    padding: 20px;
+}
+
+.movieDescription h3 {
+    padding-bottom: 20px;
+}
+
+.movieDescription span {
+    font-size: 1.4rem;
+
+}
+
+.movieDescription p {
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.information {
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.casts {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.castFrame {
+    padding: 20px 10px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.castFrame #actorName {
+    font-size: 1.2rem;
+}
+
+.castFrame #actorRole {
+    font-size: 0.9rem;
+}
+
+#backButton {
+
+    margin: 30px;
+}
