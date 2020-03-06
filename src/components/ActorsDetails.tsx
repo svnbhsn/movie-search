@@ -144,7 +144,7 @@ class ActorsDetails extends React.Component<Props, State> {
                     </div>
                     <br />
                     <div id="series">
-                        <h2><strong>Serien</strong></h2>
+                        <h2><strong>Serien & TV</strong></h2>
                         <div className="casts">
 
                             {this.state.serieRoles && (

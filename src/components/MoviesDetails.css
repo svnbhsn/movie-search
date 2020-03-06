@@ -22,6 +22,7 @@
     display: flex;
     justify-content: space-between;
     list-style: none;
+    flex-wrap: wrap;
 }
 
 .movieDescription {
@@ -70,6 +71,8 @@
 }
 
 #backButton {
+    margin: 20px 0px;
+    padding: 10px;
+    font-size: 1.3rem;
 
-    margin: 30px;
 }
