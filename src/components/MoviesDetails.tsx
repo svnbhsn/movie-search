@@ -4,12 +4,15 @@ import './MoviesDetails.css';
 import SingleMovie from "../models/SingleMovie";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { Cast } from "../models/Casts";
+import SimilarMovies from "../models/SimilarMovies";
+
 
 interface Props extends RouteComponentProps<{ id: string }> { }
 
 interface State {
     movies: SingleMovie;
     cast: Cast[];
+    similar: SimilarMovies[];
 }
 
 class MoviesDetails extends React.Component<Props, State> {
@@ -31,6 +34,15 @@ class MoviesDetails extends React.Component<Props, State> {
             .then(res => {
 
                 this.setState({ cast: res.data.cast });
+            });
+
+        // Get similar Movie basend on tags 
+        axios.get(
+            `https://api.themoviedb.org/3/movie/${this.props.match.params.id}/similar?api_key=a69372d529161c3bf5f724875b197064&language=de&page=1`
+        )
+            .then(res => {
+
+                this.setState({ similar: res.data.results });
             });
     }
 
@@ -65,6 +77,7 @@ class MoviesDetails extends React.Component<Props, State> {
 
         const movie = this.state.movies;
         const casts = this.state.cast;
+        const similars = this.state.similar;
         const date: string = this.state.movies.release_date;
         let ausschnitt = date.slice(0, 4);
 
@@ -81,7 +94,7 @@ class MoviesDetails extends React.Component<Props, State> {
                     </div>
                     <div className="movieDescription">
                         <h3>
-                            {movie.title}
+                            <strong>{movie.title}</strong>
                             <br />
                             <span>({movie.original_title})</span>
                         </h3>
@@ -111,7 +124,7 @@ class MoviesDetails extends React.Component<Props, State> {
                 </div>
                 <br />
                 <div className="information">
-                    <h2>Besetzung</h2>
+                    <h2><strong>Besetzung</strong></h2>
                     <div className="casts">
                         {casts && (
                             casts.sort().slice(0, 9).map((person: any) => (
@@ -133,6 +146,34 @@ class MoviesDetails extends React.Component<Props, State> {
                                 </div>
                             ))
                         )}
+                    </div>
+                </div>
+                <div className="information">
+                    <div id="filme">
+                        <h2> <strong>Genre Ähnliche Filme</strong></h2>
+                        <div className="casts">
+
+                            {this.state.similar && (
+                                this.state.similar.map((simMovie: any) => (
+                                    <div key={simMovie.id} className="castFrame">
+                                        <img
+                                            src={`https://image.tmdb.org/t/p/w138_and_h175_face/${simMovie.poster_path}`}
+                                            onError={this.imgError}
+                                            onClick={() =>
+                                                this.props.history.push(
+                                                    `/movies/${simMovie.id}`
+                                                )
+                                            }
+                                            alt="Movieposter"
+                                        />
+                                        <p id="actorName">
+                                            <strong>{simMovie.title}</strong> <br />
+                                        </p>
+
+                                    </div>
+                                ))
+                            )}
+                        </div>
                     </div>
                 </div>
                 <button id="backButton" className='btn btn-secondary btn-lg btn-block' onClick={() => this.props.history.goBack()}>Zurück</button>
