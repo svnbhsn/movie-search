@@ -2,6 +2,8 @@
 
 ![alt text](https://raw.githubusercontent.com/svnbhsn/movie-search/master/preview.jpg)
 
+[LIVE DEMO](http://moviesearch.sboehrnsen.de/)
+
 Realisiert mit React, TypeScript und JSX.
 Als Framework wurde Bootstrap 4.0 verwendet.
 
