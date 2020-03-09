@@ -1,3 +1,14 @@
+# TMDb Live Search
+
+![alt text](https://raw.githubusercontent.com/svnbhsn/movie-search/master/preview.jpg)
+
+Realisiert mit React, TypeScript und JSX.
+Als Framework wurde Bootstrap 4.0 verwendet.
+
+Die Informationen sind aus der [TMDb API](https://developers.themoviedb.org/3/getting-started/introduction)
+
+-------------------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
