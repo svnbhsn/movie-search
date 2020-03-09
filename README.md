@@ -4,10 +4,9 @@
 
 [LIVE DEMO](http://moviesearch.sboehrnsen.de/)
 
-Realisiert mit React, TypeScript und JSX.
-Als Framework wurde Bootstrap 4.0 verwendet.
+Abschlussprojektarbeit aus dem Kurs "Moderne Frameworks". Realisiert wurde das Projekt innerhalb von 2 Tagen mit React, TypeScript und JSX. Für Die Navigation und Footer wurde Bootstrap 4.0 verwendet.
 
-Die Informationen sind aus der [TMDb API](https://developers.themoviedb.org/3/getting-started/introduction)
+Die Informationen und Grafiken sind aus der [TMDb API](https://developers.themoviedb.org/3/getting-started/introduction)
 
 -------------------------------------------------------------------
 
